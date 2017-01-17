@@ -5,10 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity{
     private EditText editTextIp;
@@ -16,7 +14,8 @@ public class MainActivity extends AppCompatActivity{
     private EditText editTextUser;
     private EditText editTextPass;
     private Button buttonReboot;
-    private ToggleButton toggleButtonAuto;
+    private Button buttonActivate;
+    private Button buttonDeactivate;
     private Button buttonRebootRaspberry;
     private TextView textViewResult;
 
@@ -30,9 +29,12 @@ public class MainActivity extends AppCompatActivity{
         editTextUser = (EditText) findViewById(R.id.editTextUser);
         editTextPass = (EditText) findViewById(R.id.editTextPass);
         buttonReboot = (Button) findViewById(R.id.buttonReboot);
-        toggleButtonAuto = (ToggleButton) findViewById(R.id.toggleButtonAuto);
+        buttonActivate = (Button) findViewById(R.id.buttonActivate);
+        buttonDeactivate = (Button) findViewById(R.id.buttonDeactivate);
         buttonRebootRaspberry = (Button) findViewById(R.id.buttonRebootRaspberry);
         textViewResult = (TextView) findViewById(R.id.textViewResult);
+
+        
 
         buttonReboot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,24 +43,28 @@ public class MainActivity extends AppCompatActivity{
                 new SSHTask().execute(getParams("~/Desktop/restart.py"));
             }
         });
-        
-        toggleButtonAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    textViewResult.setText("Activating watchdog...");
-                    new SSHTask().execute(getParams("~/Desktop/watchdog.py 0 &"));
-                } else {
-                    textViewResult.setText("Deactivating watchdog...");
-                    new SSHTask().execute(getParams("killall -9 watchdog.py"));
-                }
-            }
-        });
 
         buttonRebootRaspberry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textViewResult.setText("Rebooting watchdog...");
+                textViewResult.setText("Rebooting raspberry...");
                 new SSHTask().execute(getParams("sudo reboot"));
+            }
+        });
+
+        buttonActivate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textViewResult.setText("Activating watchdog...");
+                new SSHTask().execute(getParams("~/Desktop/watchdog.py 0 &"));
+            }
+        });
+
+        buttonDeactivate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textViewResult.setText("Deactivating watchdog...");
+                new SSHTask().execute(getParams("killall -9 watchdog.py"));
             }
         });
     }

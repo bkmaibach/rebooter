@@ -68,34 +68,41 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textViewResult"
-        android:layout_below="@+id/buttonRebootRaspberry"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ToggleButton
-        android:text="ToggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/toggleButtonAuto"
-        android:textOff="Activate Watchdog"
-        android:textOn="Deactivate watchdog"
-        android:checked="false"
-        android:layout_below="@+id/buttonReboot"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:text="Reboot Raspberry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonRebootRaspberry"
-        android:layout_alignBaseline="@+id/toggleButtonAuto"
-        android:layout_alignBottom="@+id/toggleButtonAuto"
-        android:layout_toRightOf="@+id/toggleButtonAuto"
-        android:layout_toEndOf="@+id/toggleButtonAuto" />
+        android:layout_alignBaseline="@+id/buttonReboot"
+        android:layout_alignBottom="@+id/buttonReboot"
+        android:layout_toRightOf="@+id/buttonReboot"
+        android:layout_toEndOf="@+id/buttonReboot" />
+
+    <Button
+        android:text="Deactivate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonDeactivate"
+        android:layout_alignBaseline="@+id/buttonActivate"
+        android:layout_alignBottom="@+id/buttonActivate"
+        android:layout_toRightOf="@+id/buttonActivate"
+        android:layout_toEndOf="@+id/buttonActivate" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textViewResult"
+        android:layout_below="@+id/buttonActivate"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Activate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonActivate"
+        android:layout_below="@+id/buttonReboot"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

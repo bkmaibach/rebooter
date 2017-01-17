@@ -91,28 +91,6 @@ public class SSHManager
         return errorMessage;
     }
 
-    private String logError(String errorMessage)
-    {
-        if(errorMessage != null)
-        {
-            LOGGER.log(Level.SEVERE, "{0}:{1} - {2}",
-                    new Object[]{strConnectionIP, intConnectionPort, errorMessage});
-        }
-
-        return errorMessage;
-    }
-
-    private String logWarning(String warnMessage)
-    {
-        if(warnMessage != null)
-        {
-            LOGGER.log(Level.WARNING, "{0}:{1} - {2}",
-                    new Object[]{strConnectionIP, intConnectionPort, warnMessage});
-        }
-
-        return warnMessage;
-    }
-
     public String sendCommand(String command)
     {
         StringBuilder outputBuffer = new StringBuilder();
@@ -146,6 +124,30 @@ public class SSHManager
 
         return outputBuffer.toString();
     }
+
+    private String logError(String errorMessage)
+    {
+        if(errorMessage != null)
+        {
+            LOGGER.log(Level.SEVERE, "{0}:{1} - {2}",
+                    new Object[]{strConnectionIP, intConnectionPort, errorMessage});
+        }
+
+        return errorMessage;
+    }
+
+    private String logWarning(String warnMessage)
+    {
+        if(warnMessage != null)
+        {
+            LOGGER.log(Level.WARNING, "{0}:{1} - {2}",
+                    new Object[]{strConnectionIP, intConnectionPort, warnMessage});
+        }
+
+        return warnMessage;
+    }
+
+
 
     public void close()
     {
