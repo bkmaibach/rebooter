@@ -76,21 +76,26 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:text="Activate watchdog"
+    <ToggleButton
+        android:text="ToggleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonAuto"
+        android:id="@+id/toggleButtonAuto"
+        android:textOff="Activate Watchdog"
+        android:textOn="Deactivate watchdog"
+        android:checked="false"
         android:layout_below="@+id/buttonReboot"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Reboot watchdog"
+        android:text="Reboot Raspberry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonRebootRaspberry"
-        android:layout_below="@+id/buttonAuto"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBaseline="@+id/toggleButtonAuto"
+        android:layout_alignBottom="@+id/toggleButtonAuto"
+        android:layout_toRightOf="@+id/toggleButtonAuto"
+        android:layout_toEndOf="@+id/toggleButtonAuto" />
+
 </RelativeLayout>
